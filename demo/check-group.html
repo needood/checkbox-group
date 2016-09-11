@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="./noodle.js"></script>
+    <script src="../dist/bundle.js"></script>
+</head>
+<body>
+    <div class="js-check-group">
+        <div>
+            <h2>多选1</h2>
+            <div>
+                <label>
+                全选:<input type="checkbox" target-checkbox="test" />
+                </label>
+            </div>
+            <input type="checkbox" name="test" value="1" />
+            <input type="checkbox" name="test" value="2" />
+            <input type="checkbox" name="test" value="3" />
+            <input type="checkbox" name="test" value="4" />
+        </div>
+        <div id="test2">
+            <h2>多选2</h2>
+            <div>
+                <label>
+                全选:<input type="checkbox" target-checkbox="test2" />
+                </label>
+                <button onclick="add(document.getElementById('test2'));">添加一个选项</button>
+            </div>
+            <input type="checkbox" name="test2" value="1" />
+            <input type="checkbox" name="test2" value="2" />
+            <input type="checkbox" name="test2" value="3" />
+            <input type="checkbox" name="test2" value="4" />
+        </div>
+    </div>
+    <script>
+        var i = 4;
+        function add(el){
+            i++;
+            Noodle(el).$append('<input type="checkbox" name="test2" value="'+i+'" />');
+        }
+        var groupEl = document.querySelector(".js-check-group");
+        Noodle("input[target-checkbox]").forEach(function(checkallEl){
+            initCheckboxGroup(groupEl,checkallEl);
+        })
+    </script>
+</body>
+</html>
